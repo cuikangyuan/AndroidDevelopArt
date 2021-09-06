@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ryg.chapter_2"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -49,21 +49,94 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+
+        <!-- chapter5 -->
+        <activity
+            android:name="com.ryg.chapter_5.TestActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.ryg.chapter_5.DemoActivity_1"
+            android:configChanges="screenLayout"
+            android:exported="true"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.ryg.chapter_5.DemoActivity_2"
+            android:configChanges="screenLayout"
+            android:exported="true"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.ryg.chapter_5.MainActivity"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.ryg.chapter_5.MyAppWidgetProvider" >
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_provider_info" >
+            </meta-data>
+
+            <intent-filter>
+                <action android:name="com.ryg.chapter_5.action.CLICK" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+        </receiver>
+        <!-- chapter5 -->
+
+
+
+
+
+        <activity android:name="com.ryg.appwidget.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category._LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+<!--        <receiver android:name="com.ryg.appwidget.MyAppWidgetProvider">-->
+<!--            <meta-data-->
+<!--                android:name="android.appwidget.provider"-->
+<!--                android:resource="@xml/appwidget_provider_info"></meta-data>-->
+
+<!--            <intent-filter>-->
+<!--                <action android:name="com.ryg.chapter_5.action.CLICK" />-->
+<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
+
+        <activity android:name="com.ryg.asynctask.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:launchMode="standard" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--            </intent-filter>-->
+            android:launchMode="standard">
 
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- </intent-filter> -->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".SecondActivity"
@@ -77,61 +150,55 @@
             android:process="com.ryg.chapter_2.remote" />
         <activity
             android:name=".aidl.BookManagerActivity"
-            android:label="@string/title_activity_book_manager" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_book_manager">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".messenger.MessengerActivity"
-            android:label="@string/title_activity_messenger" >
+            android:label="@string/title_activity_messenger">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
-        </activity>
-
-<!--        <service-->
-<!--            android:name=".messenger.MessengerService"-->
-<!--            android:process=":remote" >-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.ryg.MessengerService.launch" />-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-
-        <service
-            android:name=".messenger.MessengerService">
+        </activity> <!-- <service -->
+        <!-- android:name=".messenger.MessengerService" -->
+        <!-- android:process=":remote" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.ryg.MessengerService.launch" /> -->
+        <!-- </intent-filter> -->
+        <!-- </service> -->
+        <service android:name=".messenger.MessengerService">
             <intent-filter>
                 <action android:name="com.ryg.MessengerService.launch" />
             </intent-filter>
-        </service>
-
-<!--        <service-->
-<!--            android:name=".aidl.BookManagerService"-->
-<!--            android:process=":remote" >-->
-<!--        </service>-->
-
-        <service
-            android:name=".aidl.BookManagerService">
-        </service>
+        </service> <!-- <service -->
+        <!-- android:name=".aidl.BookManagerService" -->
+        <!-- android:process=":remote" > -->
+        <!-- </service> -->
+        <service android:name=".aidl.BookManagerService" />
 
         <activity
             android:name=".provider.ProviderActivity"
-            android:label="@string/title_activity_provider" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:label="@string/title_activity_provider">
 
-<!--                <category android:name="android.intent.category._LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category._LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <provider
             android:name=".provider.BookProvider"
             android:authorities="com.ryg.chapter_2.book.provider"
             android:permission="com.ryg.PROVIDER"
-            android:process=":provider" >
-        </provider>
+            android:process=":provider" />
 
         <service
             android:name=".socket.TCPServerService"
@@ -140,12 +207,14 @@
         <activity
             android:name=".socket.TCPClientActivity"
             android:label="@string/title_activity_tcpclient"
-            android:windowSoftInputMode="adjustResize" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:windowSoftInputMode="adjustResize">
 
-<!--                <category android:name="android.intent.category._LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category._LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <service
@@ -154,12 +223,14 @@
 
         <activity
             android:name=".binderpool.BinderPoolActivity"
-            android:label="@string/title_activity_binder_pool" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:label="@string/title_activity_binder_pool">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
