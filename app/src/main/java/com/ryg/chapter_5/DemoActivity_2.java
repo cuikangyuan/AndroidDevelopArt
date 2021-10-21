@@ -1,13 +1,15 @@
 package com.ryg.chapter_5;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.PendingIntent;
+import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import com.ryg.chapter_2.R;
 import com.ryg.chapter_5.utils.MyConstants;
@@ -23,6 +25,7 @@ public class DemoActivity_2 extends Activity {
 //        Toast.makeText(this, getIntent().getStringExtra("sid"),
 //                Toast.LENGTH_SHORT).show();
         initView();
+
     }
 
     private void initView() {

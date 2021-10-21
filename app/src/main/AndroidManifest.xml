@@ -50,7 +50,15 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+        <activity
+            android:name="com.ryg.bitmapRegionDecoder.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- chapter5 -->
         <activity
             android:name="com.ryg.chapter_5.TestActivity"
@@ -69,7 +77,7 @@
             android:launchMode="standard" />
         <activity
             android:name="com.ryg.chapter_5.MainActivity"
-            android:process=":remote" >
+            android:process=":remote">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -77,42 +85,31 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.ryg.chapter_5.MyAppWidgetProvider" >
+        <receiver android:name="com.ryg.chapter_5.MyAppWidgetProvider">
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_info" >
-            </meta-data>
+                android:resource="@xml/appwidget_provider_info"></meta-data>
 
             <intent-filter>
                 <action android:name="com.ryg.chapter_5.action.CLICK" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-        </receiver>
-        <!-- chapter5 -->
-
-
-
-
-
+        </receiver> <!-- chapter5 -->
         <activity android:name="com.ryg.appwidget.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category._LAUNCHER" />
             </intent-filter>
-        </activity>
-
-<!--        <receiver android:name="com.ryg.appwidget.MyAppWidgetProvider">-->
-<!--            <meta-data-->
-<!--                android:name="android.appwidget.provider"-->
-<!--                android:resource="@xml/appwidget_provider_info"></meta-data>-->
-
-<!--            <intent-filter>-->
-<!--                <action android:name="com.ryg.chapter_5.action.CLICK" />-->
-<!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
-
+        </activity> <!-- <receiver android:name="com.ryg.appwidget.MyAppWidgetProvider"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.appwidget.provider" -->
+        <!-- android:resource="@xml/appwidget_provider_info"></meta-data> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.ryg.chapter_5.action.CLICK" /> -->
+        <!-- <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
         <activity android:name="com.ryg.asynctask.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
