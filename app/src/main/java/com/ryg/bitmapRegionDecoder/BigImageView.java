@@ -18,6 +18,8 @@ import java.io.IOException;
 
 public class BigImageView extends View {
 
+
+    private String TAG = "BigImageView";
     private BitmapRegionDecoder mDecoder;
     private int mImageWidth;
     private int mImageHeight;
@@ -53,12 +55,11 @@ public class BigImageView extends View {
      *
      * @param path 图片路径
      */
+    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD_MR1)
     public void setFilePath(String path) {
         try {
             //初始化BitmapRegionDecoder
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD_MR1) {
-                mDecoder = BitmapRegionDecoder.newInstance(path, false);
-            }
+            mDecoder = BitmapRegionDecoder.newInstance(path, false);
             BitmapFactory.Options options = new BitmapFactory.Options();
             //便是只加载图片属性，不加载bitmap进入内存
             options.inJustDecodeBounds = true;
@@ -66,7 +67,7 @@ public class BigImageView extends View {
             //图片的宽高
             mImageWidth = options.outWidth;
             mImageHeight = options.outHeight;
-            Log.d("mmm", "图片宽=" + mImageWidth + "图片高=" + mImageHeight);
+            Log.d(TAG, "图片宽=" + mImageWidth + "图片高=" + mImageHeight);
 
             requestLayout();
             invalidate();
@@ -108,23 +109,23 @@ public class BigImageView extends View {
                 //移动的距离
                 int xDistance = (int) (moveX - mDownX);
                 int yDistance = (int) (moveY - mDownY);
-                Log.d("mmm", "mDownX=" + mDownX + "mDownY=" + mDownY);
-                Log.d("mmm", "movex=" + moveX + "movey=" + moveY);
-                Log.d("mmm", "xDistance=" + xDistance + "yDistance=" + yDistance);
-                Log.d("mmm", "mImageWidth=" + mImageWidth + "mImageHeight=" + mImageHeight);
-                Log.d("mmm", "getWidth=" + getWidth() + "getHeight=" + getHeight());
+                Log.d(TAG, "mDownX=" + mDownX + "mDownY=" + mDownY);
+                Log.d(TAG, "movex=" + moveX + "movey=" + moveY);
+                Log.d(TAG, "xDistance=" + xDistance + "yDistance=" + yDistance);
+                Log.d(TAG, "mImageWidth=" + mImageWidth + "mImageHeight=" + mImageHeight);
+                Log.d(TAG, "getWidth=" + getWidth() + "getHeight=" + getHeight());
                 if (mImageWidth > getWidth()) {
                     mRect.offset(-xDistance, 0);
                     checkWidth();
                     //刷新页面
                     invalidate();
-                    Log.d("mmm", "刷新宽度");
+                    Log.d(TAG, "刷新宽度");
                 }
                 if (mImageHeight > getHeight()) {
                     mRect.offset(0, -yDistance);
                     checkHeight();
                     invalidate();
-                    Log.d("mmm", "刷新高度");
+                    Log.d(TAG, "刷新高度");
                 }
                 break;
             case MotionEvent.ACTION_UP:
